@@ -1,0 +1,19 @@
+<main class="flex flex-col items-center justify-center h-screen bg-gray-900">
+  <h2 class="text-xl font-semibold mb-4 text-white">{{ gameStatus }}</h2>
+  <div class="grid grid-cols-3 gap-2 w-64">
+    <app-square
+      *ngFor="let square of squares; let i = index"
+      [value]="square"
+      (click)="makeMove(i)"
+      class="bg-blue-500 flex items-center justify-center text-2xl border-blue-500 rounded-md transition duration-300 ease-in-out"
+    >
+    </app-square>
+  </div>
+  <button
+    class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+    nbButton
+    (click)="newGame()"
+  >
+    New Game
+  </button>
+</main>
