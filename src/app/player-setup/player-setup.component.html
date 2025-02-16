@@ -5,12 +5,12 @@
     Tic-Tac-Toe Game
   </h1>
   <div
-    class="block max-w-lg w-full mx-auto p-6 bg-blue-900 text-white border-2 border-gray-700 shadow-md rounded-lg"
+    class="block max-w-lg w-full mx-auto p-6 bg-blue-900 border-2 border-gray-700 shadow-md rounded-lg"
   >
-    <h1 class="text-2xl font-bold mb-4">Player Setup</h1>
+    <h1 class="text-2xl font-bold mb-4 text-white">Player Setup</h1>
     <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
       <div class="mb-4">
-        <label for="player1Name" class="block text-sm font-medium mb-2"
+        <label for="player1Name" class="block text-sm text-white font-medium mb-2"
           >Player 1 Name</label
         >
         <input
@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="mb-4">
-        <label for="player2Name" class="block text-sm font-medium mb-2"
+        <label for="player2Name" class="block text-sm text-white font-medium mb-2"
           >Player 2 Name</label
         >
         <input
@@ -51,7 +51,7 @@
       </div>
 
       <div class="mb-4">
-        <label for="player1Symbol" class="text-sm font-medium mb-2"
+        <label for="player1Symbol" class="text-sm text-white font-medium mb-2"
           >Player 1 Symbol</label
         >
         <select
@@ -64,7 +64,7 @@
         </select>
       </div>
       <div class="mb-4">
-        <label for="player1Symbol" class="text-sm font-medium mb-2"
+        <label for="player1Symbol" class="text-sm text-white font-medium mb-2"
           >Player 2 Symbol</label
         >
         <select

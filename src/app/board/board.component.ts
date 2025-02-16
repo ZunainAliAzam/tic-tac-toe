@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { SquareComponent } from '../square/square.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CommonModule, SquareComponent],
+  imports: [CommonModule, RouterModule, SquareComponent],
+  template: `<h1>Board Works!</h1>`,
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss',
 })
@@ -17,7 +19,13 @@ export class BoardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.newGame();
+    console.log('BoardComponent Initialized');
+    try {
+      this.newGame();
+      console.log('BoardComponent Loaded Successfully');
+    } catch (error) {
+      console.error('Error in BoardComponent:', error);
+    }
   }
 
   newGame() {
@@ -63,7 +71,9 @@ export class BoardComponent implements OnInit {
     return null;
   }
 
-  get gameStatus(){
-    return this.winner ? `Winner: ${this.winner}` : `Current player: ${this.player}`;
+  get gameStatus() {
+    return this.winner
+      ? `Winner: ${this.winner}`
+      : `Current player: ${this.player}`;
   }
 }

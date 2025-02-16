@@ -5,7 +5,7 @@ import { PlayerSetupComponent } from './player-setup/player-setup.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PlayerSetupComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
