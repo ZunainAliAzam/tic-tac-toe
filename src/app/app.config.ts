@@ -12,6 +12,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes), // Only define routes here
-    // provideClientHydration(withEventReplay()),
+    provideClientHydration(withEventReplay()),
   ],
 };
