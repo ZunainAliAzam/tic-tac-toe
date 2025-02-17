@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { SquareComponent } from '../square/square.component';
 import { RouterModule } from '@angular/router';
+import { PlayerService } from '../services/player.service';
 
 @Component({
   selector: 'app-board',
@@ -15,7 +16,7 @@ export class BoardComponent implements OnInit {
   xIsNext: boolean = false;
   winner: string | null = null;
 
-  constructor() {}
+  constructor(private playerService: PlayerService) {}
 
   ngOnInit(): void {
     console.log('BoardComponent Initialized');
@@ -34,12 +35,18 @@ export class BoardComponent implements OnInit {
   }
 
   get player() {
-    return this.xIsNext ? 'X' : 'O';
+    const {player1, player2} = this.playerService.getPlayers()
+    // return this.xIsNext ? player1.symbol : player2.symbol;
+    return this.xIsNext ? player1.name : player2.name;
+    // return this.xIsNext ? 'X' : 'O';
   }
 
   makeMove(idx: number) {
     if (!this.squares[idx] && !this.winner) {
-      this.squares.splice(idx, 1, this.player);
+      const {player1, player2} = this.playerService.getPlayers()
+      const currentPlayer = this.xIsNext ? player1.symbol : player2.symbol;
+
+      this.squares.splice(idx, 1, currentPlayer);
       this.winner = this.calculateWinner();
       this.xIsNext = !this.xIsNext;
     }
@@ -57,6 +64,8 @@ export class BoardComponent implements OnInit {
       [2, 4, 6],
     ];
 
+    const {player1, player2} = this.playerService.getPlayers()
+
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (
@@ -64,7 +73,7 @@ export class BoardComponent implements OnInit {
         this.squares[a] === this.squares[b] &&
         this.squares[a] === this.squares[c]
       ) {
-        return this.squares[a];
+        return this.squares[a] === player1.symbol ? player1.name:player2.name ;
       }
     }
     return null;
