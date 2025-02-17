@@ -1,82 +1,79 @@
-<main class="bg-gray-900 flex flex-col items-center justify-center h-screen">
-  <h1
-    class="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-8 text-white"
-  >
-    Tic-Tac-Toe Game
-  </h1>
-  <div
-    class="block max-w-lg w-full mx-auto p-6 bg-blue-900 border-2 border-gray-700 shadow-md rounded-lg"
-  >
-    <h1 class="text-2xl font-bold mb-4 text-white">Player Setup</h1>
-    <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
-      <div class="mb-4">
-        <label for="player1Name" class="block text-sm text-white font-medium mb-2"
-          >Player 1 Name</label
-        >
-        <input
-          type="text"
-          formControlName="player1"
-          class="border p-2 w-full rounded"
-          required
-        />
-        <div
-          *ngIf="
-            playerForm.get('player1')?.invalid &&
-            playerForm.get('player1')?.touched
-          "
-          class="text-red-500 text-sm"
-        >
-          Player 1 name is required
+<main class="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-4">
+  <div class="max-w-md w-full bg-gray-800/80 backdrop-blur-sm p-8 rounded-xl shadow-xl border border-gray-700/50">
+    <h1 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
+      Tic-Tac-Toe
+    </h1>
+
+    <form [formGroup]="playerForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-1.5">Player 1 Name</label>
+          <input
+            type="text"
+            formControlName="player1"
+            class="w-full px-4 py-2.5 bg-gray-700/50 border border-gray-600 rounded-lg 
+                   text-gray-100 placeholder-gray-400 focus:border-blue-500 focus:ring-1 
+                   focus:ring-blue-500 transition duration-200"
+            placeholder="Enter name"
+          />
+          <div *ngIf="playerForm.get('player1')?.invalid && playerForm.get('player1')?.touched"
+               class="mt-1 text-sm text-red-400">
+            Player 1 name is required
+          </div>
         </div>
-      </div>
-      <div class="mb-4">
-        <label for="player2Name" class="block text-sm text-white font-medium mb-2"
-          >Player 2 Name</label
-        >
-        <input
-          type="text"
-          formControlName="player2"
-          class="border p-2 w-full rounded"
-          required
-        />
-        <div
-          *ngIf="
-            playerForm.get('player2')?.invalid &&
-            playerForm.get('player2')?.touched
-          "
-          class="text-red-500 text-sm"
-        >
-          Player 2 name is required
+
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-1.5">Player 2 Name</label>
+          <input
+            type="text"
+            formControlName="player2"
+            class="w-full px-4 py-2.5 bg-gray-700/50 border border-gray-600 rounded-lg 
+                   text-gray-100 placeholder-gray-400 focus:border-blue-500 focus:ring-1 
+                   focus:ring-blue-500 transition duration-200"
+            placeholder="Enter name"
+          />
+          <div *ngIf="playerForm.get('player2')?.invalid && playerForm.get('player2')?.touched"
+               class="mt-1 text-sm text-red-400">
+            Player 2 name is required
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-300 mb-1.5">Player 1 Symbol</label>
+            <select
+              formControlName="player1Symbol"
+              class="w-full px-4 py-2.5 bg-gray-700/50 border border-gray-600 rounded-lg 
+                     text-gray-100 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 
+                     transition duration-200"
+            >
+              <option value="X">X</option>
+              <option value="O">O</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-300 mb-1.5">Player 2 Symbol</label>
+            <select
+              formControlName="player2Symbol"
+              class="w-full px-4 py-2.5 bg-gray-700/50 border border-gray-600 rounded-lg 
+                     text-gray-100 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 
+                     transition duration-200"
+            >
+              <option value="X">X</option>
+              <option value="O">O</option>
+            </select>
+          </div>
         </div>
       </div>
 
-      <div class="mb-4">
-        <label for="player1Symbol" class="text-sm text-white font-medium mb-2"
-          >Player 1 Symbol</label
-        >
-        <select
-          formControlName="player1Symbol"
-          class="border p-2 w-full rounded"
-          required
-        >
-          <option value="X">X</option>
-          <option value="O">O</option>
-        </select>
-      </div>
-      <div class="mb-4">
-        <label for="player1Symbol" class="text-sm text-white font-medium mb-2"
-          >Player 2 Symbol</label
-        >
-        <select
-          formControlName="player2Symbol"
-          class="border p-2 w-full rounded"
-          required
-        >
-          <option value="X">X</option>
-          <option value="O">O</option>
-        </select>
-      </div>
-      <button type="submit" class="bg-blue-500 text-white p-2 rounded">
+      <button 
+        type="submit"
+        class="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold 
+               rounded-lg shadow-lg shadow-blue-500/20 hover:from-blue-500 hover:to-blue-600 
+               transition duration-300 mt-8 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
+               focus:ring-offset-gray-800"
+      >
         Start Game
       </button>
     </form>
